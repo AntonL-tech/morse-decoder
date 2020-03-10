@@ -37,35 +37,16 @@ const MORSE_TABLE = {
     '-----':  '0',
 };
 
+
 function decode(expr) {
-    let arr =[],
-        res2 = [];
-    arr = expr.split('**********');
 
-    for (let i = 0; i < arr.length; i++ ) {
-        let el = arr[i];
-        let str2 = '';
-        for (let j = 0; j < el.length ; j+=10) {
-            let el2 = el.slice(j, j+10);
-            let str = '';
-            for (let k = 0; k < el2.length; k += 2) {
-                let compare = (el2[k] + '' + el2[k+1]);
-                if (compare === '10') {
-                    str += '.';
-                } else if (compare === '11') {
-                    str += '-';
-                }
-            }
-            str2 += MORSE_TABLE[str];
+    for (let i = 0; i < expr.length; i + 2) {
+        if (expr[i] + '' + expr[i+1] == '10') {
+            console.log('win');
         }
-        res2.push(str2);
     }
-    return res2.join(' ');
+
 }
 
-module.exports = {
-    decode
-}
-
-
-
+// decode("00101010100000000010001011101000101110100000111111**********00001011110000111111000010111000101110100000111010");
+decode("00101010100000000010");
